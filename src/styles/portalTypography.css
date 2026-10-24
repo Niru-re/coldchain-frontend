@@ -1,0 +1,154 @@
+/* ============================================================
+   ColdChain 360 — Portal-Specific Typography & Design Tokens
+   Scoped to portal layout wrappers to prevent font leakage
+   ============================================================ */
+
+/* Google Fonts import — Truck, Railway, Warehouse portals */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   TRUCK PORTAL — Road Operations Command Center
+   Fonts: Barlow Condensed (headings) + Inter (body)
+   ============================================================ */
+.truck-portal {
+  --font-heading: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Color tokens */
+  --truck-bg: #111418;
+  --truck-surface: #1C2028;
+  --truck-surface-2: #242931;
+  --truck-border: #2E3440;
+  --truck-border-light: #3B4252;
+  --truck-text-primary: #E8EAF0;
+  --truck-text-secondary: #8B9BB4;
+  --truck-text-muted: #5A6680;
+  --truck-amber: #F2AE32;
+  --truck-amber-dim: rgba(242,174,50,0.12);
+  --truck-green: #22C55E;
+  --truck-red: #EF4444;
+  --truck-blue: #60A5FA;
+
+  background-color: var(--truck-bg);
+  color: var(--truck-text-primary);
+  font-family: var(--font-body);
+  min-height: 100%;
+}
+
+.truck-portal h1,
+.truck-portal h2,
+.truck-portal h3,
+.truck-portal h4,
+.truck-portal .heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+.truck-portal .metric-value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   RAILWAY PORTAL — Rail Network Operations Console
+   Fonts: IBM Plex Mono (codes/tables) + IBM Plex Sans (headings/body)
+   ============================================================ */
+.railway-portal {
+  --font-heading: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Color tokens — midnight navy palette */
+  --rail-bg: #F4F6FB;
+  --rail-surface: #FFFFFF;
+  --rail-surface-2: #EEF1F8;
+  --rail-navy: #0F1B35;
+  --rail-navy-mid: #1E3A6E;
+  --rail-blue: #2563EB;
+  --rail-blue-light: #3B82F6;
+  --rail-steel: #64748B;
+  --rail-border: #CBD5E1;
+  --rail-border-dark: #94A3B8;
+  --rail-text-primary: #0F1B35;
+  --rail-text-secondary: #475569;
+  --rail-text-muted: #94A3B8;
+  --rail-red: #DC2626;
+  --rail-amber: #D97706;
+  --rail-green: #16A34A;
+  --rail-signal-green: #22C55E;
+  --rail-signal-red: #EF4444;
+  --rail-signal-amber: #F59E0B;
+
+  background-color: var(--rail-bg);
+  color: var(--rail-text-primary);
+  font-family: var(--font-body);
+  min-height: 100%;
+}
+
+.railway-portal h1,
+.railway-portal h2,
+.railway-portal h3,
+.railway-portal h4,
+.railway-portal .heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.railway-portal .mono,
+.railway-portal table,
+.railway-portal .train-id,
+.railway-portal .wagon-id,
+.railway-portal .timetable,
+.railway-portal .code {
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   WAREHOUSE PORTAL — Cold Storage & Inventory Control
+   Fonts: Manrope (headings) + Source Sans 3 (body)
+   ============================================================ */
+.warehouse-portal {
+  --font-heading: 'Manrope', 'Segoe UI', sans-serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+  /* Color tokens — warm neutral + teal */
+  --whs-bg: #F5F7F6;
+  --whs-surface: #FFFFFF;
+  --whs-surface-2: #EEF2F0;
+  --whs-teal: #06383D;
+  --whs-teal-mid: #0D5359;
+  --whs-teal-light: #E6F2F3;
+  --whs-border: #D1DAD8;
+  --whs-border-light: #E8EDEC;
+  --whs-text-primary: #1A2C2E;
+  --whs-text-secondary: #4A6B6E;
+  --whs-text-muted: #8AADAF;
+  --whs-cyan: #0891B2;
+  --whs-cyan-light: #E0F2FE;
+  --whs-amber: #F2AE32;
+  --whs-red: #DC2626;
+  --whs-red-light: #FEE2E2;
+  --whs-green: #16A34A;
+  --whs-green-light: #DCFCE7;
+  --whs-purple: #7C3AED;
+
+  background-color: var(--whs-bg);
+  color: var(--whs-text-primary);
+  font-family: var(--font-body);
+  min-height: 100%;
+}
+
+.warehouse-portal h1,
+.warehouse-portal h2,
+.warehouse-portal h3,
+.warehouse-portal h4,
+.warehouse-portal .heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* ============================================================
+   FARMER PORTAL — keeps existing global styles
+   No scoped overrides needed; farmer portal uses global tokens
+   ============================================================ */

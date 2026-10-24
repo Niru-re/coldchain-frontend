@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace;
+    
+    /* 5-Color System */
+    --color-primary: #06383D;
+    --color-accent: #F2AE32;
+    --color-background: #F0EEEA;
+    --color-text: #292D2F;
+    --color-muted: #A5A5A4;
+
+    /* Light Industrial Logistics Theme */
+    --bg-primary: #F0EEEA;
+    --bg-secondary: #E8E6E2;
+    --bg-surface: #FFFFFF;
+    
+    --text-primary: #292D2F;
+    --text-secondary: #A5A5A4;
+    --text-muted: #A5A5A4;
+    
+    --border-main: #D0CEC9;
+    --border-soft: #E0DED9;
+    
+    --accent-amber: #F2AE32;
+    --accent-teal: #06383D;
+    --accent-green: #16803C;
+    --accent-red: #DC2626;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #F0EEEA;
+    color: #292D2F;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Precision Light Industrial Hairline Borders */
+.border-main {
+  border-color: #D0CEC9;
+}
+
+.border-soft {
+  border-color: #E0DED9;
+}
+
+/* Light Industrial Engineering Grid */
+.bg-industrial-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(41, 45, 47, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(41, 45, 47, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-matrix-light {
+  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(41, 45, 47, 0.04) 1px, transparent 1px);
+}
+
+/* Legacy utility aliases mapped to light theme for compatibility */
+.bg-radar-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(41, 45, 47, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(41, 45, 47, 0.04) 1px, transparent 1px);
+}
+
+.hairline-b {
+  border-bottom: 1px solid #D0CEC9;
+}
+.hairline-t {
+  border-top: 1px solid #D0CEC9;
+}
+.hairline-r {
+  border-right: 1px solid #D0CEC9;
+}
+.hairline-l {
+  border-left: 1px solid #D0CEC9;
+}
+
+/* Custom Clean Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #E8E6E2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C0BEBC;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A5A5A4;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.03); }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+/* ColdChain 360 Custom Leaflet Map Styling */
+.leaflet-container {
+  background-color: #F0EEEA !important;
+  font-family: var(--font-sans);
+}
+
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  color: #292D2F !important;
+  border: 1px solid #D0CEC9 !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 30px rgba(6, 56, 61, 0.12) !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: normal !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+  border: 1px solid #D0CEC9 !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-close-button {
+  color: #A5A5A4 !important;
+  padding: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #06383D !important;
+}
+
+.leaflet-bar {
+  border: 1px solid #D0CEC9 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.leaflet-bar a {
+  background-color: #FFFFFF !important;
+  color: #292D2F !important;
+  border-bottom: 1px solid #D0CEC9 !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #F0EEEA !important;
+  color: #06383D !important;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom: none !important;
+}
+

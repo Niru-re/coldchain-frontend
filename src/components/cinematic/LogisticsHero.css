@@ -1,0 +1,819 @@
+/* ==========================================================================
+   MotionSites.ai “Logistics Freight” Hero Design
+   Strictly adheres to exact metrics, timings, typography, and responsive grid
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Oswald:wght@400;700;800&display=swap');
+
+/* Typography fallbacks and overrides */
+@font-face {
+  font-family: 'Display';
+  src: local('Oswald ExtraBold'), local('Oswald-Bold'), local('Oswald'), local('Bebas Neue'), local('Impact');
+  font-weight: 800;
+  font-display: block;
+  ascent-override: 99.9%;
+  descent-override: 20.1%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'UI';
+  src: local('Barlow Condensed Bold'), local('BarlowCondensed-Bold'), local('Oswald Bold'), local('Oswald'), local('Arial Narrow');
+  font-weight: 700;
+  font-display: block;
+  ascent-override: 95%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'UI';
+  src: local('Barlow Condensed Regular'), local('BarlowCondensed-Regular'), local('Oswald Regular'), local('Oswald'), local('Arial Narrow');
+  font-weight: 400;
+  font-display: block;
+  ascent-override: 95%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --cream: #F7F5EF;
+  --white: #F9F9F9;
+  --ink: rgba(255, 255, 255, 0.88);
+  /* ColdChain 360 Golden Amber brand accent */
+  --accent: #F2AE32;
+  --s: min(100vh / 800, 100vw / 716);
+  --cover: max(100vw / 1280, 100vh / 800);
+}
+
+/* Full-viewport overflow-hidden hero frame */
+.logistics-hero-frame {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0a0b0c;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-feature-settings: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  user-select: none;
+}
+
+/* Aerial freight-train background video */
+.logistics-hero-frame .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #0a0b0c;
+  z-index: 1;
+  pointer-events: none;
+  /* Hardware acceleration & dedicated compositor layer for sharpest playback */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  /* Enhance contrast and edge definition when rendered at full viewport */
+  image-rendering: -webkit-optimize-contrast;
+  /* Strictly ensure zero blur or filter degradation */
+  filter: none;
+  -webkit-filter: none;
+}
+
+/* Gradient Tint Overlay */
+.logistics-hero-frame .tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  filter: none;
+  -webkit-filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.118) 0%,
+    rgba(0, 0, 0, 0.092) 11%,
+    rgba(0, 0, 0, 0.083) 20%,
+    rgba(0, 0, 0, 0.079) 29%,
+    rgba(0, 0, 0, 0.014) 37.5%,
+    rgba(0, 0, 0, 0.016) 46%,
+    rgba(0, 0, 0, 0.043) 55%,
+    rgba(0, 0, 0, 0.058) 64%,
+    rgba(0, 0, 0, 0.062) 73%,
+    rgba(0, 0, 0, 0.080) 81%,
+    rgba(0, 0, 0, 0.090) 90%,
+    rgba(0, 0, 0, 0.095) 100%
+  );
+}
+
+/* Bottom Vignette to merge seamlessly with the following section */
+.logistics-hero-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 11, 12, 0.3) 35%,
+    rgba(10, 11, 12, 0.7) 70%,
+    #0a0b0c 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 1280x800 Stage (Desktop Landscape / Wide) */
+.logistics-hero-frame .stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1280px;
+  height: 800px;
+  margin: -400px 0 0 -640px;
+  transform: scale(var(--s));
+  transform-origin: 50% 50%;
+  z-index: 3;
+}
+
+/* Eyebrow: WHY US */
+.logistics-hero-frame .eyebrow {
+  position: absolute;
+  left: 0;
+  top: 67.8px;
+  width: 1280px;
+  margin: 0;
+  font: 700 7.4px/7.4px 'UI', 'Barlow Condensed', 'Oswald', system-ui, sans-serif;
+  word-spacing: 0.522px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  letter-spacing: 2.252px;
+  text-indent: 2.252px;
+}
+
+.logistics-hero-frame .eyebrow span {
+  position: relative;
+  display: block;
+  left: -0.9px;
+}
+
+/* Headline: 4 Stacked Spans */
+.logistics-hero-frame .headline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  margin: 0;
+  font: 800 61.74px/61.74px 'Display', 'Oswald', 'Bebas Neue', Impact, system-ui, sans-serif;
+  word-spacing: 2.691px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-shadow: 0 15px 36px rgba(0, 0, 0, 0.50);
+}
+
+.logistics-hero-frame .headline span {
+  position: absolute;
+  left: 0;
+  width: 1280px;
+  display: block;
+  white-space: nowrap;
+}
+
+.logistics-hero-frame .headline .hl1 {
+  top: 83.62px;
+  letter-spacing: -0.075px;
+  left: 0.45px;
+  text-indent: -0.075px;
+}
+
+.logistics-hero-frame .headline .hl2 {
+  top: 137.02px;
+  letter-spacing: -1.237px;
+  text-indent: -1.237px;
+}
+
+.logistics-hero-frame .headline .hl3 {
+  top: 187.97px;
+  letter-spacing: -0.237px;
+  left: 1.8px;
+  text-indent: -0.237px;
+}
+
+.logistics-hero-frame .headline .hl4 {
+  top: 247.92px;
+  letter-spacing: -0.487px;
+  left: 1.35px;
+  text-indent: -0.487px;
+  color: var(--accent);
+  text-shadow: 0 0 32px rgba(242, 174, 50, 0.45), 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Feature Category Tag - Harmonized with Train Golden Amber */
+.logistics-hero-frame .feature .feature-tag {
+  position: absolute;
+  top: 546px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 700 11px/1 'UI', 'Barlow Condensed', 'Oswald', monospace, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.logistics-hero-frame .feature .feature-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  display: inline-block;
+}
+
+.logistics-hero-frame .f-left .feature-tag {
+  right: 0;
+  flex-direction: row-reverse;
+}
+
+.logistics-hero-frame .f-right .feature-tag {
+  left: 0;
+  flex-direction: row;
+}
+
+/* Accent Mark SVG */
+.logistics-hero-frame .mark {
+  position: absolute;
+  left: 549.5px;
+  top: 493.6px;
+  width: 52px;
+  height: 52px;
+  overflow: visible;
+}
+
+/* Common Feature Block Rules */
+.logistics-hero-frame .feature {
+  position: absolute;
+  top: 0;
+}
+
+.logistics-hero-frame .feature h2 {
+  position: absolute;
+  top: 575px;
+  margin: 0;
+  font: 700 27px/30px 'UI', 'Barlow Condensed', 'Oswald', system-ui, sans-serif;
+  letter-spacing: 0.4px;
+  word-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.logistics-hero-frame .feature h2 span {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+}
+
+.logistics-hero-frame .feature p {
+  position: absolute;
+  top: 646px;
+  margin: 0;
+  font: 400 15.5px/22px 'UI', 'Barlow Condensed', 'Oswald', system-ui, sans-serif;
+  word-spacing: 0.1px;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.logistics-hero-frame .feature p span {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+}
+
+/* Left Feature Block */
+.logistics-hero-frame .f-left {
+  text-align: right;
+  right: 748.5px;
+}
+
+.logistics-hero-frame .f-left .icon {
+  position: absolute;
+  right: -4.5px;
+  top: 549.5px;
+  width: 35px;
+  height: 34px;
+}
+
+.logistics-hero-frame .f-left h2 {
+  right: 0;
+}
+
+.logistics-hero-frame .f-left h2 .t1 {
+  letter-spacing: -0.109px;
+}
+
+.logistics-hero-frame .f-left h2 .t2 {
+  letter-spacing: 0.246px;
+}
+
+.logistics-hero-frame .f-left p {
+  right: 12px;
+}
+
+.logistics-hero-frame .f-left p .b1 {
+  letter-spacing: -0.097px;
+  left: 0.9px;
+}
+
+.logistics-hero-frame .f-left p .b2 {
+  letter-spacing: -0.271px;
+  left: 1.8px;
+}
+
+.logistics-hero-frame .f-left p .b3 {
+  letter-spacing: -0.161px;
+  left: 0.9px;
+}
+
+/* Right Feature Block */
+.logistics-hero-frame .f-right {
+  text-align: left;
+  left: 748.5px;
+}
+
+.logistics-hero-frame .f-right .icon {
+  position: absolute;
+  left: -3px;
+  top: 547.5px;
+  width: 35px;
+  height: 38px;
+}
+
+.logistics-hero-frame .f-right h2 {
+  left: 0;
+}
+
+.logistics-hero-frame .f-right h2 .t1 {
+  letter-spacing: -0.354px;
+  left: -0.9px;
+}
+
+.logistics-hero-frame .f-right h2 .t2 {
+  letter-spacing: -0.154px;
+}
+
+.logistics-hero-frame .f-right p {
+  left: 12px;
+}
+
+.logistics-hero-frame .f-right p .b1 {
+  letter-spacing: -0.247px;
+  left: -0.9px;
+}
+
+.logistics-hero-frame .f-right p .b2 {
+  letter-spacing: -0.15px;
+  left: -0.9px;
+}
+
+.logistics-hero-frame .f-right p .b3 {
+  letter-spacing: -0.247px;
+  left: -0.9px;
+}
+
+/* ==========================================================================
+   Entrance Animations (~1.8s single sequence, then still)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .logistics-hero-frame .eyebrow {
+    animation: riseIn 0.55s cubic-bezier(0.33, 0.9, 0.35, 1) 0.15s both;
+  }
+
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .logistics-hero-frame .headline span {
+    animation: lineIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .logistics-hero-frame .headline .hl1 {
+    animation-delay: 0.28s;
+  }
+  .logistics-hero-frame .headline .hl2 {
+    animation-delay: 0.37s;
+  }
+  .logistics-hero-frame .headline .hl3 {
+    animation-delay: 0.46s;
+  }
+  .logistics-hero-frame .headline .hl4 {
+    animation-delay: 0.55s;
+  }
+
+  @keyframes lineIn {
+    0% {
+      opacity: 0;
+      transform: translateY(0.26em);
+      clip-path: inset(100% -30% 0% -30%);
+    }
+    35% {
+      opacity: 1;
+    }
+    90% {
+      clip-path: inset(0% -30% -100% -30%);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(-80% -30% -100% -30%);
+    }
+  }
+
+  .logistics-hero-frame .mark {
+    transform-origin: 50% 50%;
+    animation: markIn 0.7s cubic-bezier(0.2, 0.9, 0.25, 1) 0.72s both;
+  }
+
+  @keyframes markIn {
+    from {
+      opacity: 0;
+      transform: scale(0.88);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .logistics-hero-frame .f-left {
+    animation: blockInL 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.82s both;
+  }
+
+  .logistics-hero-frame .f-right {
+    animation: blockInR 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.90s both;
+  }
+
+  @keyframes blockInL {
+    from {
+      opacity: 0;
+      transform: translate(-12px, 8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes blockInR {
+    from {
+      opacity: 0;
+      transform: translate(12px, 8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ==========================================================================
+   Responsive: Tablet Portrait
+   @media (min-width:610px) and (max-aspect-ratio:1/1)
+   ========================================================================== */
+
+@media (min-width: 610px) and (max-aspect-ratio: 1/1) {
+  :root {
+    --u: min(100vw / 768, 100vh / 1024);
+    --rail: clamp(120px, calc(var(--cover) * 219), 26vw);
+  }
+
+  .logistics-hero-frame .stage {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: none;
+    display: grid;
+    grid-template-columns: 1fr var(--rail) 1fr;
+    grid-template-rows: auto auto 1fr auto auto minmax(0, 0.38fr);
+    padding: calc(46 * var(--u)) clamp(24px, 5.2vw, 72px) calc(24 * var(--u));
+  }
+
+  .logistics-hero-frame .eyebrow,
+  .logistics-hero-frame .headline,
+  .logistics-hero-frame .feature,
+  .logistics-hero-frame .feature h2,
+  .logistics-hero-frame .feature p,
+  .logistics-hero-frame .feature .icon {
+    position: static;
+  }
+
+  .logistics-hero-frame .eyebrow {
+    grid-area: 1 / 1 / 2 / -1;
+    font-size: calc(11 * var(--u));
+    line-height: 1;
+    letter-spacing: 0.304em;
+    text-indent: 0.304em;
+    word-spacing: 0.07em;
+    margin-bottom: calc(20 * var(--u));
+    width: auto;
+  }
+
+  .logistics-hero-frame .headline {
+    grid-area: 2 / 1 / 3 / -1;
+    font-size: calc(84 * var(--u));
+    line-height: 0.92;
+    word-spacing: 0.0436em;
+    width: auto;
+  }
+
+  .logistics-hero-frame .headline span {
+    position: static;
+    display: block;
+    letter-spacing: -0.012em;
+    width: auto;
+    left: auto;
+    top: auto;
+    text-indent: 0;
+  }
+
+  .logistics-hero-frame .mark {
+    grid-area: 4 / 1 / 5 / -1;
+    justify-self: center;
+    position: relative;
+    right: 5%;
+    left: auto;
+    top: auto;
+    width: calc(64 * var(--u));
+    height: calc(64 * var(--u));
+    margin-bottom: calc(16 * var(--u));
+  }
+
+  .logistics-hero-frame .f-left {
+    grid-area: 5 / 1 / 6 / 2;
+    right: auto;
+    top: auto;
+    text-align: right;
+  }
+
+  .logistics-hero-frame .f-right {
+    grid-area: 5 / 3 / 6 / 4;
+    left: auto;
+    top: auto;
+    text-align: left;
+  }
+
+  .logistics-hero-frame .feature .icon {
+    display: block;
+    width: calc(42 * var(--u));
+    height: calc(46 * var(--u));
+    margin-bottom: calc(14 * var(--u));
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .f-left .icon {
+    margin-left: auto;
+    margin-right: calc(-4.5 * var(--u));
+  }
+
+  .logistics-hero-frame .f-right .icon {
+    margin-right: auto;
+    margin-left: calc(-3 * var(--u));
+  }
+
+  .logistics-hero-frame .feature h2 {
+    font-size: calc(28 * var(--u));
+    line-height: 1.1;
+    word-spacing: 0.094em;
+    margin-bottom: calc(12 * var(--u));
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .feature h2 span {
+    white-space: normal;
+    letter-spacing: -0.018em;
+    left: auto;
+  }
+
+  .logistics-hero-frame .feature p {
+    font-size: calc(17.5 * var(--u));
+    line-height: 1.38;
+    word-spacing: -0.016em;
+    max-width: calc(340 * var(--u));
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .feature p span {
+    display: inline;
+    white-space: normal;
+    letter-spacing: -0.02em;
+    left: auto;
+  }
+
+  .logistics-hero-frame .f-left p {
+    margin-left: auto;
+    margin-right: calc(10 * var(--u));
+    right: auto;
+  }
+
+  .logistics-hero-frame .f-right p {
+    margin-right: auto;
+    margin-left: calc(10 * var(--u));
+    left: auto;
+  }
+}
+
+/* ==========================================================================
+   Responsive: Phone
+   @media (max-width:609px)
+   ========================================================================== */
+
+@media (max-width: 609px) {
+  .logistics-hero-frame {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  :root {
+    --u: min(100vw / 390, 100vh / 780);
+    --u: min(100vw / 390, 100dvh / 780);
+  }
+
+  .logistics-hero-frame .stage {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: none;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto 1fr auto auto auto minmax(0, 0.3fr);
+    padding: calc(30 * var(--u))
+      max(calc(22 * var(--u)), env(safe-area-inset-right))
+      max(calc(32 * var(--u)), env(safe-area-inset-bottom))
+      max(calc(22 * var(--u)), env(safe-area-inset-left));
+  }
+
+  .logistics-hero-frame .eyebrow,
+  .logistics-hero-frame .headline,
+  .logistics-hero-frame .feature,
+  .logistics-hero-frame .feature h2,
+  .logistics-hero-frame .feature p,
+  .logistics-hero-frame .feature .icon {
+    position: static;
+  }
+
+  .logistics-hero-frame .eyebrow {
+    grid-row: 1;
+    font-size: clamp(8px, calc(9.5 * var(--u)), 11px);
+    line-height: 1;
+    letter-spacing: 0.304em;
+    text-indent: 0.304em;
+    margin-bottom: calc(16 * var(--u));
+    width: auto;
+  }
+
+  .logistics-hero-frame .headline {
+    grid-row: 2;
+    font-size: clamp(26px, min(11.6vw, calc(52 * var(--u))), 64px);
+    line-height: 0.92;
+    letter-spacing: -0.012em;
+    width: auto;
+  }
+
+  .logistics-hero-frame .headline span {
+    position: static;
+    display: block;
+    width: auto;
+    left: auto;
+    top: auto;
+    text-indent: 0;
+  }
+
+  .logistics-hero-frame .mark {
+    grid-row: 4;
+    justify-self: center;
+    position: relative;
+    right: 5%;
+    left: auto;
+    top: auto;
+    width: clamp(38px, calc(46 * var(--u)), 54px);
+    height: clamp(38px, calc(46 * var(--u)), 54px);
+    margin-bottom: calc(18 * var(--u));
+  }
+
+  .logistics-hero-frame .f-left {
+    grid-row: 5;
+    margin-bottom: calc(26 * var(--u));
+    text-align: right;
+    right: auto;
+    top: auto;
+  }
+
+  .logistics-hero-frame .f-right {
+    grid-row: 6;
+    text-align: left;
+    left: auto;
+    top: auto;
+  }
+
+  .logistics-hero-frame .feature .icon {
+    display: block;
+    width: clamp(26px, calc(34 * var(--u)), 40px);
+    height: clamp(28px, calc(37 * var(--u)), 43px);
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .f-left .icon {
+    margin-left: auto;
+    margin-right: calc(-4 * var(--u));
+  }
+
+  .logistics-hero-frame .f-right .icon {
+    margin-right: auto;
+    margin-left: calc(-3 * var(--u));
+  }
+
+  .logistics-hero-frame .feature h2 {
+    font-size: clamp(18px, calc(21 * var(--u)), 25px);
+    line-height: 1.1;
+    margin-bottom: calc(8 * var(--u));
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .feature h2 span {
+    white-space: normal;
+    left: auto;
+  }
+
+  .logistics-hero-frame .feature p {
+    font-size: clamp(13.5px, calc(15.5 * var(--u)), 17.5px);
+    line-height: 1.38;
+    max-width: calc(340 * var(--u));
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .feature p span {
+    display: inline;
+    white-space: normal;
+    left: auto;
+  }
+
+  .logistics-hero-frame .f-left p {
+    margin-left: auto;
+    right: auto;
+  }
+
+  .logistics-hero-frame .f-right p {
+    margin-right: auto;
+    left: auto;
+  }
+}
